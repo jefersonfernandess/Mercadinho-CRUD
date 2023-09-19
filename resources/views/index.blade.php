@@ -1,1 +1,0 @@
-<h1>Main página</h1>
