@@ -22,7 +22,10 @@
                     <td>{{ $produto->preco }}</td>
                     <td>{{ $produto->quantidade }}</td>
                     <td>{{ $produto->codigo }}</td>
-                    <td>Opções</td> <!-- Você pode adicionar opções aqui se necessário -->
+                    <td>
+                        <a href class="btn btn-warning" ="{{ route('site.edit', $produto->id)}}">Editar</a>
+                    </td>
+                    
                 </tr>
             @endforeach
         </tbody>

@@ -22,4 +22,29 @@ class ProdutosController extends Controller
         
         return redirect()->route('site.index');
     }
+
+    public function edit($id) {
+        $produtos = Produtos::find($id);
+        if ($produtos) {
+            return view('site.edit', compact('produtos'));
+        }
+        else {
+
+        return view('site.index')->with('produtos', $produtos)
+            ->with('msg', 'Produto não encontrado!');
+        }
+    }
+
+    public function update(Request $request, $id) {
+        $produto = Produtos::find($id);
+
+        $produto->nome = $request->input('nome');
+        $produto->preco = $request->input('preco');
+        $produto->quantidade = $request->input('quantidade');
+        $produto->codigo = $request->input('codigo');
+        
+        $produto->save();
+
+        return view('site.home');
+    }
 }

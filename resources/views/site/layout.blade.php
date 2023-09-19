@@ -9,22 +9,21 @@
 </head>
 <body>
     
-    <nav class="navbar navbar-expand-lg bg-light">
-        <div class="container-fluid">
+    <div class="container">
+        <nav class="navbar navbar-expand-lg bg-light">
+            <div class="container-fluid">
+              <a class="navbar-brand btn btn-primary" href="{{ route('site.index') }}">Página inicial</a>
+              <a class="navbar-brand btn btn btn-success" href="{{ route('site.create') }}">Adicionar produtos</a>
+            </div>
+        </nav>
     
-          <a class="navbar-brand" href="{{ route('site.create') }}">Adicionar produtos</a>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          <div class="collapse navbar-collapse" id="navbarNav">
-            
-          </div>
-        </div>
-    </nav>
+        @yield('tabela-main')
+    
+        @yield('create-form')
 
-    @yield('tabela-main')
-
-    @yield('create-form')
+        @yield('edit-form')
+    </div>
+    
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 </body>
 </html>
