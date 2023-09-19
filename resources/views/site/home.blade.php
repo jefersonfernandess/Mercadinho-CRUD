@@ -3,10 +3,9 @@
 @section('title', 'Mercado - Página inicial')
 
 @section('tabela-main')
-    <table class="table table-striped">
+    <table class="table table-striped mt-5">
         <thead>
             <tr>
-                <th scope="col">#</th>
                 <th scope="col">Nome</th>
                 <th scope="col">Preço</th>
                 <th scope="col">Quantidade</th>
@@ -17,14 +16,11 @@
         <tbody>
             @foreach ($produtos as $produto)
                 <tr>
-                    <td scope="row">{{ $produto->id }}</td>
                     <td>{{ $produto->nome }}</td>
-                    <td>{{ $produto->preco }}</td>
-                    <td>{{ $produto->quantidade }}</td>
+                    <td>R$ {{ $produto->preco }}</td>
+                    <td>{{ $produto->quantidade }} unidade(s)</td>
                     <td>{{ $produto->codigo }}</td>
-                    <td>
-                        <a href class="btn btn-warning" ="{{ route('site.edit', $produto->id)}}">Editar</a>
-                    </td>
+                    <td><a class="btn btn-warning" href ="{{ route('site.edit', $produto->id)}}">Editar</a></td>
                     
                 </tr>
             @endforeach

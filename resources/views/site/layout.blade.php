@@ -10,10 +10,10 @@
 <body>
     
     <div class="container">
-        <nav class="navbar navbar-expand-lg bg-light">
+        <nav class="navbar navbar-expand-lg bg-light mt-5   ">
             <div class="container-fluid">
               <a class="navbar-brand btn btn-primary" href="{{ route('site.index') }}">Página inicial</a>
-              <a class="navbar-brand btn btn btn-success" href="{{ route('site.create') }}">Adicionar produtos</a>
+              <a class="navbar-brand btn btn btn-secondary" href="{{ route('site.create') }}">Adicionar produtos</a>
             </div>
         </nav>
     

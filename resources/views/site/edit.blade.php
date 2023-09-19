@@ -2,7 +2,7 @@
 
 @section('edit-form')
 
-    <h1>Editar livro</h1>
+    <h1>Editar produto</h1>
 
     @if ($errors->any())
         <ul>
@@ -12,15 +12,37 @@
         </ul>
     @endif
 
-    <form action="{{ route('site.update', $produtos->id) }}" method="post">
-
+    <form action="{{ route('site.update', $produto->id) }}" method="post" class="row g-3">
+        
         @csrf
         @method('put')
-        <input type="text" name="nome" placeholder="Nome" value="{{ $produtos->nome }}">
-        <input type="text" name="preco" placeholder="Preço" value="{{ $produtos->preco }}">
-        <input type="text" name="quantidade" placeholder="Quantidade" value="{{ $produtos->quantidade }}">
-        <input type="text" name="codigo" placeholder="Código" value="{{ $produtos->codigo }}">
-        <button type="submit">Atualizar</button>
+        <div class="col-auto">
+          <label for="nome" class="visually-hidden">Nome</label>
+          <input type="text"  class="form-control" name="nome" value="{{ $produto-> nome}}">
+        </div>
+        <div class="col-auto">
+          <label for="preco" class="visually-hidden">Preço</label>
+          <input type="text" class="form-control" name="preco" placeholder="Preço" value="{{ $produto-> preco}}">
+        </div>
+        <div class="col-auto">
+            <label for="quantidade" class="visually-hidden">Preço</label>
+            <input type="text" class="form-control" name="quantidade" placeholder="Quantidade" value="{{ $produto-> quantidade}}">
+        </div>
+        <div class="col-auto">
+            <label for="codigo" class="visually-hidden">Preço</label>
+            <input type="text" class="form-control" name="codigo" placeholder="Código" value="{{ $produto-> codigo}}">
+        </div>
 
-    </form>
+        <div class="col-auto">
+            <button class="btn btn-secondary" type="submit">Atualizar</button>
+        </div>
+      </form> 
+
+      <div class="col-auto">
+        <form action="{{ route('site.destroy', $produto->id)}}" method="post">
+            @csrf
+            @method('DELETE')
+            <button class="btn btn-danger" type="submit">Deletar</button>   
+        </form>
+    </div>
 @endsection

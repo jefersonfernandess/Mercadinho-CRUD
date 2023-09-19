@@ -24,13 +24,13 @@ class ProdutosController extends Controller
     }
 
     public function edit($id) {
-        $produtos = Produtos::find($id);
-        if ($produtos) {
-            return view('site.edit', compact('produtos'));
+        $produto = Produtos::find($id);
+        if ($produto) {
+            return view('site.edit', compact('produto'));
         }
         else {
 
-        return view('site.index')->with('produtos', $produtos)
+        return view('site.index')
             ->with('msg', 'Produto não encontrado!');
         }
     }
@@ -38,13 +38,17 @@ class ProdutosController extends Controller
     public function update(Request $request, $id) {
         $produto = Produtos::find($id);
 
-        $produto->nome = $request->input('nome');
-        $produto->preco = $request->input('preco');
-        $produto->quantidade = $request->input('quantidade');
-        $produto->codigo = $request->input('codigo');
-        
-        $produto->save();
+        $produto->update($request->all());
 
-        return view('site.home');
+        return redirect()->route('site.index');
+    }
+
+    public function destroy($id) {
+        $produto = Produtos::find($id);
+    
+        $produto->delete();
+        $produto = Produtos::all();
+        return redirect()->route('site.index')
+            ->with('msg', "Produto excluído com sucesso!");
     }
 }
